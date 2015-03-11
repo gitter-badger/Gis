@@ -28,10 +28,10 @@ public class MainStageController {
 //        try {
 //            ProductDAO productDAO =new ProductDAO();
 //            Product product = productDAO.getProd(name);
-//           // System.out.println(product.getName_product());
-//            resultId.setText(product.getName_product()+product.getPrice_product());
+//           // System.out.println(product.getName());
+//            resultId.setText(product.getName()+product.getPrice());
 //           System.out.println( "Пользователь получен из базы данных. Имя: "
-//                    + product.getName_product()+ " price product: " + product.getPrice_product());
+//                    + product.getName()+ " price product: " + product.getPrice());
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //            System.out.println("Pizda rulu");

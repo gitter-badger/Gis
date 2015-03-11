@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Table(name = "address")
 public class Address {
 
-    int id_address;
-    String address;
-    String status;
+    private int id;
+    private String address;
+    private String status;
 
-    public Address(int id_address, String address, String status) {
-        this.id_address = id_address;
+    public Address(int id, String address, String status) {
+        this.id = id;
         this.address = address;
         this.status = status;
     }
@@ -23,13 +23,14 @@ public class Address {
     }
 
     @Id
-    @GeneratedValue
-    public int getId_address() {
-        return id_address;
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setId_address(int id_address) {
-        this.id_address = id_address;
+    public void setId(int id_address) {
+        this.id = id_address;
     }
 
     public String getAddress() {
@@ -40,7 +41,7 @@ public class Address {
         this.address = address;
     }
 
-    public String isStatus() {
+    public String getStatus() {
         return status;
     }
 

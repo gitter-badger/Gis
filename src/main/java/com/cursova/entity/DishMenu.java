@@ -1,46 +1,60 @@
 package com.cursova.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
 * Created by Dima on 27.02.2015.
 */
+
 @Entity
 @Table(name = "menu")
 public class DishMenu {
 
-    public int id_dish;
-
-    public String name_menu;
+    public int id;
+    public Set<Dish> dishes = new HashSet<>();
+    public String name;
 
     public DishMenu() {
     }
 
-    public DishMenu(String name_menu, int id_dish) {
-        this.name_menu = name_menu;
-        this.id_dish = id_dish;
+    public DishMenu(int id, Set<Dish> dishes, String name) {
+        this.id = id;
+        this.dishes = dishes;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name_menu) {
+        this.name = name_menu;
     }
 
     @Id
-    @GeneratedValue
-    public String getName_menu() {
-        return name_menu;
+    @Column(name="id", columnDefinition = "serial")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setName_menu(String name_menu) {
-        this.name_menu = name_menu;
+    public void setId(int id_dish) {
+        this.id = id_dish;
     }
 
-    public int getId_dish() {
-        return id_dish;
+    @OneToMany
+    @JoinTable(
+            name="menu_dishes",
+            joinColumns = @JoinColumn( name = "id_menu" ),
+            inverseJoinColumns = @JoinColumn( name = "id_dishes" )
+    )
+    public Set<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setId_dish(int id_dish) {
-        this.id_dish = id_dish;
+    public void setDishes(Set<Dish> dishes) {
+        this.dishes = dishes;
     }
-
-
 }

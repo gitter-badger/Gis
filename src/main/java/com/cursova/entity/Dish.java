@@ -11,24 +11,39 @@ import java.util.Set;
 @Table(name = "dishes")
 public class Dish  {
 
-   Set<Product> products = new HashSet<>();
-    Integer id_dishes;
-    String name_dishes;
-    double price_dishes;
+    private int id;
+    private String name;
+    private double price;
+    private Set<Product> products = new HashSet<>();
 
     public Dish() {
-
     }
 
-    public Dish(Set<Product> products, Integer id_dishes, String name_dishes, double price_dishes) {
+    public Dish(Set<Product> products, Integer id, String name, double price) {
         this.products = products;
-        this.id_dishes = id_dishes;
-        this.name_dishes = name_dishes;
-        this.price_dishes = price_dishes;
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
-    @ManyToMany
-    @JoinTable(name = "product")
+
+    @Id
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id_dishes) {
+        this.id = id_dishes;
+    }
+
+    @OneToMany
+    @JoinTable(
+            name="dishes_product",
+            joinColumns = @JoinColumn( name="id_dishes" ),
+            inverseJoinColumns = @JoinColumn( name="id_product" )
+    )
     public Set<Product> getProducts() {
         return products;
     }
@@ -37,29 +52,20 @@ public class Dish  {
         this.products = products;
     }
 
-    @Id
-    @GeneratedValue
-    public Integer getId_dishes() {
-        return id_dishes;
+    public String getName() {
+        return name;
     }
 
-    public void setId_dishes(Integer id_dishes) {
-        this.id_dishes = id_dishes;
+    public void setName(String name_dishes) {
+        this.name = name_dishes;
     }
 
-    public String getName_dishes() {
-        return name_dishes;
+    public double getPrice() {
+        return price;
     }
 
-    public void setName_dishes(String name_dishes) {
-        this.name_dishes = name_dishes;
+    public void setPrice(double price_dishes) {
+        this.price = price_dishes;
     }
 
-    public double getPrice_dishes() {
-        return price_dishes;
-    }
-
-    public void setPrice_dishes(double price_dishes) {
-        this.price_dishes = price_dishes;
-    }
 }

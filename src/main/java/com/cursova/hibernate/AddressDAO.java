@@ -26,7 +26,7 @@ public class AddressDAO extends DAO {
     public Address getAddress(int id_address, String address, String status) throws Exception{
         try {
             begin();
-            Query q = getSession().createQuery("from Address where id_address= :id_address");
+            Query q = getSession().createQuery("from Address where id= :id_address");
             q.setString(id_address,"id_address");
             Address addr = (Address) q.uniqueResult();
             commit();

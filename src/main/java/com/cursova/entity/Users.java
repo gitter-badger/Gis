@@ -1,11 +1,6 @@
 package com.cursova.entity;
 
-import com.cursova.hibernate.DAO;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Dima on 24.02.2015.
@@ -14,32 +9,33 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class Users {
 
-    int id_user;
-    String login;
-    String pass;
-    String fullname;
-    String status;
+    private int id;
+    private String login;
+    private String password;
+    private String fullName;
+    private String status;
 
     public Users() {
 
     }
 
-    public Users(int id_user, String login, String pass, String fullname, String status) {
-        this.id_user = id_user;
+    public Users(int id, String login, String password, String fullName, String status) {
+        this.id = id;
         this.login = login;
-        this.pass = pass;
-        this.fullname = fullname;
+        this.password = password;
+        this.fullName = fullName;
         this.status = status;
     }
 
     @Id
-    @GeneratedValue
-    public int getId_user() {
-        return id_user;
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setId(int id_user) {
+        this.id = id_user;
     }
 
     public String getLogin() {
@@ -50,20 +46,21 @@ public class Users {
         this.login = login;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String pass) {
+        this.password = pass;
     }
 
-    public String getFullname() {
-        return fullname;
+    @Column(columnDefinition = "full_name")
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getStatus() {

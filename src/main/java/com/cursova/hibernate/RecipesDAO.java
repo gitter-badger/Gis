@@ -33,7 +33,7 @@ public class RecipesDAO extends DAO {
     public Recipes getRecipes(int id_recipe) throws Exception{
         try {
             begin();
-            Query q = getSession().createQuery("from Recipes where id_recipe = :id_recipe");
+            Query q = getSession().createQuery("from Recipes where id = :id_recipe");
             q.setString(id_recipe,"id_recipe");
             Recipes recipe =(Recipes) q.uniqueResult();
             commit();

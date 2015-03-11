@@ -1,7 +1,5 @@
 package com.cursova.entity;
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by Dima on 17.02.2015.
@@ -10,52 +8,44 @@ import java.util.Set;
 @Table(name = "product")
 public class Product {
 
-    private int id_product;
-    private String  name_product ;
-    private double price_product;
-    private boolean in_stock;
+    private int id;
+    private String name;
+    private double price;
 
     public Product() {
     }
 
-    public Product(Integer id_product, String name_product, double price_product, boolean in_stock) {
-        this.id_product = id_product;
-        this.name_product = name_product;
-        this.price_product = price_product;
-        this.in_stock = in_stock;
+    public Product(Integer id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
     @Id
-    @GeneratedValue
-    public int getId_product() {
-        return id_product;
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setId_product(int id_product) {
-        this.id_product = id_product;
+    public void setId(int id_product) {
+        this.id = id_product;
     }
 
-    public String getName_product() {
-        return name_product;
+    public String getName() {
+        return name;
     }
 
-    public void setName_product(String name_product) {
-        this.name_product = name_product;
+    public void setName(String name_product) {
+        this.name = name_product;
     }
 
-    public double getPrice_product() {
-        return price_product;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrice_product(double price_product) {
-        this.price_product = price_product;
+    public void setPrice(double price_product) {
+        this.price = price_product;
     }
 
-    public boolean isIn_stock() {
-        return in_stock;
-    }
-
-    public void setIn_stock(boolean in_stock) {
-        this.in_stock = in_stock;
-    }
 }

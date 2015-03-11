@@ -28,7 +28,7 @@ public class DishesDAO extends DAO {
     public Dish getDishes(Integer id_product, Integer id_dishes, String name_dishes, double price_dishes) throws Exception{
         try {
             begin();
-            Query q = getSession().createQuery("from Dish where name_dishes = :name_dishes");
+            Query q = getSession().createQuery("from Dish where name = :name_dishes");
             q.setString("name_dishes",name_dishes);
             Dish dish = (Dish) q.uniqueResult();
             commit();

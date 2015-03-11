@@ -11,8 +11,8 @@ import java.util.TreeSet;
  * Created by Dima on 18.02.2015.
  */
 
-@Entity
-@javax.persistence.Table(name="orders")
+//@Entity
+//@javax.persistence.Table(name="orders")
 public class Order {
 
     int id_order;
@@ -31,8 +31,8 @@ public class Order {
         this.date = date;
     }
 
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     public int getId_order() {
         return id_order;
     }
@@ -41,8 +41,8 @@ public class Order {
         this.id_order = id_order;
     }
 
-    @ManyToMany
-    @JoinTable(name="dishes")
+//    @ManyToMany
+//    @JoinTable(name="dishes")
     public Set<Dish> getDishes() {
         return dishes;
     }

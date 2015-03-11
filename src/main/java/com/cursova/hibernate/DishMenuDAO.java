@@ -13,7 +13,7 @@ public class DishMenuDAO extends DAO {
         public void createDishMenu(String name_menu, int id_dish) throws Exception{
             try {
                 begin();
-                DishMenu dishMenu = new DishMenu(name_menu,id_dish);
+//                DishMenu dishMenu = new DishMenu(name_menu,id_dish);
                 commit();
             }catch(HibernateException e){
                 rollback();
@@ -26,7 +26,7 @@ public class DishMenuDAO extends DAO {
 
             try{
                 begin();
-                Query q = getSession().createQuery("from DishMenu where id_dish = :id_dish");
+                Query q = getSession().createQuery("from DishMenu where id = :id_dish");
                 q.setString(id_dish,"id_dish");
                 DishMenu dishMenu =(DishMenu) q.uniqueResult();
                 commit();

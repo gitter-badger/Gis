@@ -9,10 +9,10 @@ import org.hibernate.Query;
  */
 public class ProductDAO  extends DAO {
 
-    public Product createProduct(Integer id_product, String name_product, double price_product, boolean in_stock) throws Exception {
+    public Product createProduct(int id_product, String name_product, double price_product, boolean in_stock) throws Exception {
         try {
             begin();
-            Product product = new Product(id_product, name_product, price_product, in_stock);
+            Product product = new Product(id_product, name_product, price_product);
             getSession().save(product);
             commit();
             return product;
@@ -26,7 +26,7 @@ public class ProductDAO  extends DAO {
     public Product getProd(String name_product) throws Exception {
         try {
             begin();
-            Query q = getSession().createQuery("from Product where name_product = :name_product");
+            Query q = getSession().createQuery("from Product where name = :name_product");
             q.setString("name_product", name_product);
             Product product = (Product) q.uniqueResult();
             commit();

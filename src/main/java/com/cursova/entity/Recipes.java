@@ -8,16 +8,16 @@ import java.util.Set;
  * Created by Dima on 18.02.2015.
  */
 @Entity
-@Table(name = "recepe")
+@Table(name = "recipe")
 public class Recipes {
 
-        int id_recipe;
-        Dish dish;
-        Set<Product> product = new HashSet<>();
-        String description;
+        private int id;
+        private Dish dish;
+        private Set<Product> product = new HashSet<>();
+        private String description;
 
-    public Recipes(int id_recipe, Dish dish, Set<Product> product, String description) {
-        this.id_recipe = id_recipe;
+    public Recipes(int id, Dish dish, Set<Product> product, String description) {
+        this.id = id;
         this.dish = dish;
         this.product = product;
         this.description = description;
@@ -27,18 +27,19 @@ public class Recipes {
 
     }
 
-
     @Id
-    @GeneratedValue
-    public int getId_recipe() {
-        return id_recipe;
+    @Column(name="id", columnDefinition = "serial")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setId_recipe(int id_recipe) {
-        this.id_recipe = id_recipe;
+    public void setId(int id_recipe) {
+        this.id = id_recipe;
     }
-    @ManyToOne
-    @JoinTable(name = "dishes")
+
+    @OneToOne
+    @JoinColumn(name = "id_dish")
     public Dish getDish() {
         return dish;
     }
@@ -46,8 +47,13 @@ public class Recipes {
     public void setDish(Dish dish) {
         this.dish = dish;
     }
+
     @ManyToMany
-    @JoinTable(name = "product")
+    @JoinTable(
+            name="product_recipe",
+            joinColumns = @JoinColumn( name="id_recipe" ),
+            inverseJoinColumns = @JoinColumn( name="id_product" )
+    )
     public Set<Product> getProduct() {
         return product;
     }
@@ -63,4 +69,5 @@ public class Recipes {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
