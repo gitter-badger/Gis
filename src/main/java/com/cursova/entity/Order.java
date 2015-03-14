@@ -1,48 +1,51 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by Dima on 18.02.2015.
  */
 
-//@Entity
-//@javax.persistence.Table(name="orders")
+@Entity
+@javax.persistence.Table(name="orders")
 public class Order {
 
-    int id_order;
-    Set<Dish> dishes = new HashSet<>();
-    double sum_price;
-    java.sql.Date date;
+    private int id;
+    private Set<Dish> dishes = new HashSet<>();
+    private double sum_price;
+    private Date date;
 
     public Order() {
 
     }
 
-    public Order(int id_order, Set<Dish> dishes, double sum_price, Date date) {
-        this.id_order = id_order;
+    public Order(int id, Set<Dish> dishes, double sum_price, Date date) {
+        this.id = id;
         this.dishes = dishes;
         this.sum_price = sum_price;
         this.date = date;
     }
 
-//    @Id
-//    @GeneratedValue
-    public int getId_order() {
-        return id_order;
+    @Id
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() {
+        return id;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setId(int id) {
+        this.id = id;
     }
 
-//    @ManyToMany
-//    @JoinTable(name="dishes")
+    @OneToMany
+    @JoinTable(
+            name="order_dishes",
+            joinColumns = @JoinColumn( name="id_order" ),
+            inverseJoinColumns = @JoinColumn( name="id_dish" )
+    )
     public Set<Dish> getDishes() {
         return dishes;
     }

@@ -58,3 +58,14 @@ CREATE TABLE menu_dishes (
   id_menu INTEGER NOT NULL,
   id_dishes INTEGER NOT NULL
 );
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  sum_price FLOAT,
+  date DATE
+);
+
+CREATE TABLE order_dishes (
+  id_order INTEGER NOT NULL,
+  id_dish INTEGER NOT NULL
+);
