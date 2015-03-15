@@ -27,6 +27,13 @@ public class Users {
         this.status = status;
     }
 
+    public Users(String login, String password, String fullName, String status) {
+        this.login = login;
+        this.password = password;
+        this.fullName = fullName;
+        this.status = status;
+    }
+
     @Id
     @Column(columnDefinition = "serial")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -54,7 +61,7 @@ public class Users {
         this.password = pass;
     }
 
-    @Column(columnDefinition = "full_name")
+    @Column(name = "full_name")
     public String getFullName() {
         return fullName;
     }

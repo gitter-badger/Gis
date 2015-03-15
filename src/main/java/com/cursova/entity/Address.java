@@ -22,8 +22,13 @@ public class Address {
     public Address() {
     }
 
+    public Address(String address, String status) {
+        this.address = address;
+        this.status = status;
+    }
+
     @Id
-    @Column(columnDefinition = "serial")
+    @Column(name = "id", columnDefinition = "serial")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;

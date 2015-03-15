@@ -1,14 +1,6 @@
 package com.cursova.gui.controllers;
 
-import com.cursova.entity.Product;
-import com.cursova.hibernate.ProductDAO;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
-
-import java.awt.*;
-import java.awt.TextField;
 
 /**
  * Created by Dima on 24.02.2015.

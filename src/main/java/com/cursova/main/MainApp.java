@@ -1,17 +1,14 @@
 package com.cursova.main;
+import com.cursova.DAO.FactoryDAO;
 import com.cursova.entity.Address;
-import com.cursova.entity.Dish;
-import com.cursova.entity.Product;
+import com.cursova.entity.Users;
 import com.cursova.gui.MainStage;
-import com.cursova.hibernate.ProductDAO;
+import com.cursova.DAO.AddressDAO;
 import com.cursova.persistence.HibernateUtil;
+import com.cursova.persistence.SessionUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.hibernate.Session;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Dima on 17.02.2015.
@@ -22,61 +19,28 @@ public class MainApp extends Application{
 
     public static void main(String []args) throws Exception {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        FactoryDAO factoryDAO = FactoryDAO.getInstance();
 
-        session.beginTransaction();
-        Address address = new Address();
-        address.setAddress("Kiev");
-        address.setStatus("Cafe");
-        session.save(address);
+//        factoryDAO.getAddressDAO().addAddress(new Address("Odesa","Склад"));
+//        System.out.println(factoryDAO.getAddressDAO().getById(4).getAddress());
+//        HibernateUtil.shutdown();
 
+//        factoryDAO.getAddressDAO().deleteAddress(new Address(1,"Kiev","Cafe"));
 
-//        address.setIdAddress(2);
-//        address.setAddress("Kieasdvw");
-//        address.setStatus("asdasd1");
-//
-//        session.save(address);
-//
-//        List<Product> list = session.createCriteria(Product.class).list();
-//        Dish dishes = (Dish) session.load(Dish.class, 4);
-//        dishes.getProducts().forEach((a)->{
-//            System.out.println(a.getName());
+//        factoryDAO.getAddressDAO().getAllAddress().forEach((a)->{
+//            System.out.println(a.getAddress());
 //        });
-//        Set<Product> productSet = new HashSet<>();
-//        list.forEach(productSet::add);
-//
-//        Dishes dishes = new Dishes();
-//        dishes.setProduct(productSet);
-//        dishes.setName("Ololod");
-//        dishes.setPrice(123);
-//
-//        session.save(dishes);
 
-        session.getTransaction().commit();
+//        System.out.println(factoryDAO.getAddressDAO().getById(2).getAddress());
 
-        session.close();
-
-//
-//        try {
-//            ProductDAO productDAO = new ProductDAO();
-//            Product product = productDAO.createProduct(2,"Vasa",123.2,true);
-//            System.out.println("product created :Name product : "
-//                    + product.getName() + " price: " + product.getPrice());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//      String name="ab";
-//        try {
-//            ProductDAO productDAO =new ProductDAO();
-//            Product product = productDAO.getProd(name);
-//            System.out.println(product.getName());
-//           System.out.println( "Пользователь получен из базы данных. Имя: "
-//                    + product.getName()+ " price product: " + product.getPrice());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println("Pizda rulu");
-//        }
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Address address = (Address) session.load(Address.class,3);
+//        session.close();
+//        SessionUtil sessionUtil = new SessionUtil();
+        factoryDAO.getUsersDAO().add(new Users("Sailor","gfhjkm","Ivan","Ololo"));
+//        sessionUtil.close();
+//        System.out.println(address.getAddress());
+//        HibernateUtil.shutdown();
 //        launch(args);
     }
 
