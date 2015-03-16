@@ -13,17 +13,13 @@ import java.util.Set;
 /**
  * Created by Dima on 18.02.2015.
  */
-public class OrdersDAO extends DAOImpl<OrdersDAO> {
+public class OrdersDAO extends DAOImpl<Order> {
 
     @Override
-    public OrdersDAO getById(int id) {
-        return null;
+    protected Class returnClass() {
+        return Order.class;
     }
 
-    @Override
-    public List<OrdersDAO> getAll() {
-        return null;
-    }
 }
 
 

@@ -19,6 +19,11 @@ public class DishMenu {
     public DishMenu() {
     }
 
+    public DishMenu(Set<Dish> dishes, String name) {
+        this.dishes = dishes;
+        this.name = name;
+    }
+
     public DishMenu(int id, Set<Dish> dishes, String name) {
         this.id = id;
         this.dishes = dishes;

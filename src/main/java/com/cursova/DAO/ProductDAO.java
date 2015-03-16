@@ -1,10 +1,8 @@
 package com.cursova.DAO;
+
 import com.cursova.DAO.impl.DAOImpl;
 import com.cursova.entity.Product;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 
-import java.util.List;
 
 
 /**
@@ -13,14 +11,10 @@ import java.util.List;
 public class ProductDAO  extends DAOImpl<Product> {
 
     @Override
-    public Product getById(int id) {
-        return null;
+    protected Class returnClass() {
+        return Product.class;
     }
 
-    @Override
-    public List<Product> getAll() {
-        return null;
-    }
 }
 
 

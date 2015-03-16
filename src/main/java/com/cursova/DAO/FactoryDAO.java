@@ -1,6 +1,5 @@
 package com.cursova.DAO;
 
-import com.cursova.entity.DishMenu;
 
 /**
  * Created by roma on 15.03.15.
@@ -28,7 +27,15 @@ public class FactoryDAO {
     }
 
     private FactoryDAO() {
+
         usersDAO = new UsersDAO();
+        dishesDAO = new DishesDAO();
+        dishMenuDAO = new DishMenuDAO();
+        ordersDAO = new OrdersDAO();
+        productDAO = new ProductDAO();
+        recipesDAO = new RecipesDAO();
+        addressDAO = new AddressDAO();
+
     }
 
     public UsersDAO getUsersDAO() {

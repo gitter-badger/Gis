@@ -13,12 +13,8 @@ import java.util.List;
 public class DishMenuDAO extends DAOImpl<DishMenu> {
 
     @Override
-    public DishMenu getById(int id) {
-        return null;
+    protected Class returnClass() {
+        return DishMenu.class;
     }
 
-    @Override
-    public List<DishMenu> getAll() {
-        return null;
-    }
 }
