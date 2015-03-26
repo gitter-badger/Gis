@@ -6,6 +6,6 @@ package com.cursova.gui;
 public class MainStage extends Activity {
 
     public MainStage() {
-        super("/gui_fxml/authentication.fxml", "MainStage");
+        super("/fxml/authentication.fxml", "MainStage");
     }
 }

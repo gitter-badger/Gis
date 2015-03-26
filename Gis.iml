@@ -51,5 +51,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="postgresql:postgresql:9.2-1002.jdbc4" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
   </component>
 </module>
