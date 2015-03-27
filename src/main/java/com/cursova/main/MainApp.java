@@ -25,10 +25,10 @@ public class MainApp extends Application{
 
         FactoryDAO factoryDAO = FactoryDAO.getInstance();
 
-        DishMenu dishMenu = factoryDAO.getDishMenuDAO().getById(1);
+        DishMenu dishMenu = factoryDAO.getDishMenuDAO().getAll().get(0);
+        dishMenu.getDishes().forEach(System.out::println);
 
-        Thread.sleep(5000);
-        HibernateUtil.shutdown();
+
 
 
     }

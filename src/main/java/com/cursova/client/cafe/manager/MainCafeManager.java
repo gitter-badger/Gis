@@ -20,9 +20,6 @@ public class MainCafeManager {
 
             Registry registry = LocateRegistry.getRegistry(HOST_NAME, PORT);
 
-            IOperatorService operatorService = (IOperatorService) registry.lookup("Operator");
-            System.out.println(operatorService.test());
-
         } catch (IOException e) {
             e.printStackTrace();
         }

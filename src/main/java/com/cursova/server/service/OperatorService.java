@@ -29,10 +29,5 @@ public class OperatorService extends BaseService implements IOperatorService {
         return true;
     }
 
-    @Override
-    public String test() throws RemoteException {
-        System.out.println("Test !!!!");
-        return "Hello";
-    }
 
 }

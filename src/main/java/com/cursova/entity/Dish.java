@@ -1,7 +1,9 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -9,12 +11,12 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "dishes")
-public class Dish  {
+public class Dish implements Serializable {
 
     private int id;
     private String name;
     private double price;
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new LinkedHashSet<>();
 
     public Dish() {
     }
@@ -68,4 +70,8 @@ public class Dish  {
         this.price = price_dishes;
     }
 
+    @Override
+    public String toString() {
+        return  name + ": " + price;
+    }
 }

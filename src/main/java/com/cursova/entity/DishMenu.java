@@ -1,7 +1,9 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -10,10 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "menu")
-public class DishMenu {
+public class DishMenu implements Serializable {
 
     public int id;
-    public Set<Dish> dishes = new HashSet<>();
+    public Set<Dish> dishes = new LinkedHashSet<>();
     public String name;
 
     public DishMenu() {
@@ -49,11 +51,12 @@ public class DishMenu {
         this.id = id_dish;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="menu_dishes",
             joinColumns = @JoinColumn( name = "id_menu" ),
             inverseJoinColumns = @JoinColumn( name = "id_dishes" )
+
     )
     public Set<Dish> getDishes() {
         return dishes;
@@ -61,5 +64,10 @@ public class DishMenu {
 
     public void setDishes(Set<Dish> dishes) {
         this.dishes = dishes;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

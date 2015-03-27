@@ -1,13 +1,14 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Dima on 24.02.2015.
  */
 @Entity
 @Table(name = "address")
-public class Address {
+public class Address implements Serializable{
 
     private int id;
     private String address;

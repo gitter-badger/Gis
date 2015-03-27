@@ -20,5 +20,4 @@ public interface IOperatorService extends Remote {
 
     public boolean addNewOrder(Order order) throws RemoteException;
 
-    public String test() throws RemoteException;
 }

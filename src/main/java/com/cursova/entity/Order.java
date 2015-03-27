@@ -1,8 +1,10 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -11,10 +13,10 @@ import java.util.Set;
 
 @Entity
 @javax.persistence.Table(name="orders")
-public class Order {
+public class Order implements Serializable {
 
     private int id;
-    private Set<Dish> dishes = new HashSet<>();
+    private Set<Dish> dishes = new LinkedHashSet<>();
     private double sum_price;
     private Date date;
 

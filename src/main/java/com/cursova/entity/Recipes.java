@@ -1,7 +1,9 @@
 package com.cursova.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -9,11 +11,11 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "recipe")
-public class Recipes {
+public class Recipes implements Serializable {
 
         private int id;
         private Dish dish;
-        private Set<Product> product = new HashSet<>();
+        private Set<Product> product = new LinkedHashSet<>();
         private String description;
 
     public Recipes(int id, Dish dish, Set<Product> product, String description) {
